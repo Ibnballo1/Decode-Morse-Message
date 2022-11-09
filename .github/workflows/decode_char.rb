@@ -36,3 +36,4 @@ end
 puts decode_char(".-")
 puts decode_word("-- -.--")
 puts decode_sentence("-- -.--   -. .- -- .")
+puts decode_sentence(".-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...")
