@@ -1,4 +1,5 @@
 # create a hash variable to hold the morse_alphabets
+
 @morse_alphabets = {
   '.-' => 'A', '-...' => 'B', '-.-.' => 'C', '-..' => 'D', '.' => 'E',
   '..-.' => 'F', '--.' => 'G', '....' => 'H', '..' => 'I', '.---' => 'J',
@@ -11,29 +12,31 @@
 }
 
 def decode_char(char)
-  @current_letter = @morse_alphabets[char]
-  @current_letter
+  @letter = @morse_alphabets[char]
+  @letter
 end
 
-def decode_word(word)
-  @current_word = ''
-  word.split.each do |char|
-    decode_char(char)
-    @current_word += decode_char(char)
+def decode_word(words)
+  @new_str = ''
+  words.split(' ').each do |char|
+    @new_str += decode_char(char)
   end
-  @current_word
+  @new_str
 end
 
-def decode_sentence(sentence)
-  # @current_sentence = sentence.split('  ')
-  decode_sentence = ''
-  sentence.split('   ').each do |word|
-    decode_sentence += decode_word(word)
+def decode_sentence(sentences)
+  @new_sentence = ''
+  sentences.split('   ').map do |word|
+    @new_sentence += "#{decode_word(word)} "
   end
-  decode_sentence
+  @new_sentence
 end
 
-puts decode_char(".-")
-puts decode_word("-- -.--")
-puts decode_sentence("-- -.--   -. .- -- .")
-puts decode_sentence(".-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...")
+# def decode_sentence(morse_code)
+#   morse_code.split('   ').map { |word| word.split(' ').map {|letter| decode_char(letter) }.join }.join(' ') 
+# end
+
+puts decode_char('.-')
+puts decode_word('-- -.--')
+puts decode_sentence('-- -.--   -. .- -- .')
+puts decode_sentence('.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...')
