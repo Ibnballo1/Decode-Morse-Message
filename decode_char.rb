@@ -26,7 +26,7 @@ end
 
 def decode_sentence(sentences)
   @new_sentence = ''
-  sentences.split('   ').map do |word|
+  sentences.split('   ').each do |word|
     @new_sentence += "#{decode_word(word)} "
   end
   @new_sentence
